@@ -1,10 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import NoSuchElementException
 import time
 from time import sleep
 import config
 
 today = time.localtime(time.time())
+time_str = '00:00-12:00'
+if (today.tm_hour >= 12):
+    time_str = '12:00-00:00'
 
 browser = webdriver.Chrome()
 browser.set_window_size(900, 920)
@@ -27,8 +31,9 @@ sleep(1)
 # 检查是否登录成功
 try:
     browser.find_element_by_class_name('success')
-except:
+except NoSuchElementException:
     print('Login Failed')
+    browser.close()
     exit(1)
 print('Login Success')
 
@@ -72,13 +77,11 @@ cur = browser.find_element_by_id('dpTodayInput')
 cur.click()
 
 browser.switch_to.parent_frame()
+date_str = browser.find_element_by_id('field11250span').text
 
 # 出校时间段
 cur = browser.find_element_by_id('field11251')
-if (today.tm_hour < 12):
-    Select(cur).select_by_visible_text('00:00-12:00')
-else:
-    Select(cur).select_by_visible_text('12:00-00:00')
+Select(cur).select_by_visible_text(time_str)
 
 # 出校去向
 cur = browser.find_element_by_id('field11241')
@@ -125,10 +128,7 @@ browser.switch_to.parent_frame()
 
 # 返校时间段
 cur = browser.find_element_by_id('field11255')
-if (today.tm_hour < 12):
-    Select(cur).select_by_visible_text('00:00-12:00')
-else:
-    Select(cur).select_by_visible_text('12:00-00:00')
+Select(cur).select_by_visible_text(time_str)
 
 # 目前健康状况
 cur = browser.find_element_by_id('field11259')
@@ -150,3 +150,6 @@ browser.switch_to.parent_frame()
 # 提交
 cur = browser.find_element_by_xpath('//*[@id="null_box"]/input[1]')
 cur.click()
+
+print('You can eat out at: ' + date_str + ' ' + time_str)
+browser.close()
