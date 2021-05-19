@@ -96,7 +96,7 @@ class OA:
 
         self.config.username = config.username
         self.config.password = config.password
-        print('Updated config: username = ', self.config.username)
+        print('Updated config: username =', self.config.username)
 
     def login(self) -> None:
         "执行用户登录"
