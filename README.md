@@ -14,11 +14,28 @@ SSPU automatic applying for leaving school
 * 定时运行
 * API
 
+## 使用方法
+
+### 单次运行
+
+* 修改 `config.py`
+* 运行 `apply.py`
+
+### 定时运行
+
+* 修改 `config.py`
+* 运行 `scheduler.py`
+
+### API
+
+* 运行 `api.py`
+* `GET` request to `http://ip:6991/apply?username=123&password=123`
+
 ## 浏览器支持
 
 * Google Chrome
-* Firefox *(Not tested)*
-* Microsoft Edge *(Not tested)*
+* Firefox _(Not tested)_
+* Microsoft Edge _(Not tested)_
 
 ## 依赖
 
@@ -31,5 +48,5 @@ SSPU automatic applying for leaving school
 ### pip 包依赖
 
 * `selenium`
-*`Flask`*(for API)
-*`schedule`*(for scheduler)*
+* `Flask` _(for API)_
+* `schedule` _(for scheduler)_
