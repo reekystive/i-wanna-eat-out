@@ -1,3 +1,4 @@
-selenium
+requests
 schedule
+beautifulsoup4
 Flask

@@ -3,13 +3,16 @@ from config import users
 
 
 def apply_all() -> None:
+    oa = OA(users[0])
+    oa.launch()
     for user in users:
         print()
-        obj = OA(user)
-        obj.login()
-        obj.login_oa()
-        obj.apply()
+        oa.update_config(user)
+        oa.login()
+        oa.apply()
+        oa.logout()
     print()
+    oa.quit()
 
 
 if __name__ == '__main__':
