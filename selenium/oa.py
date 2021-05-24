@@ -57,7 +57,7 @@ class OA:
         elif (self.config.browser_type == 'firefox'):
             options = firefox_options.Options()
         elif (self.config.browser_type == 'edge'):
-            options = edge_options.Options()
+            pass
 
         if (self.config.browser_path != 'auto'):
             options.binary_location = self.config.browser_path
@@ -71,7 +71,7 @@ class OA:
             elif (self.config.browser_type == 'firefox'):
                 self.browser = webdriver.Firefox(options=options)
             elif (self.config.browser_type == 'edge'):
-                self.browser = webdriver.Edge(options=options)
+                self.browser = webdriver.Edge()
         else:
             if (self.config.browser_type == 'chrome'):
                 self.browser = webdriver.Chrome(
@@ -81,7 +81,7 @@ class OA:
                     self.config.driver_path, options=options)
             elif (self.config.browser_type == 'edge'):
                 self.browser = webdriver.Edge(
-                    self.config.driver_path, options=options)
+                    self.config.driver_path)
 
         self.browser.set_window_size(900, 920)
 
