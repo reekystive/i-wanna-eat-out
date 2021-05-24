@@ -28,7 +28,7 @@ SSPU automatic applying for leaving school
 
 ### API
 
-* 运行 `api.py`
+* 运行 `api.py` (API 模式下不使用 `config.py`)
 * `GET` request to `http://ip:6991/apply?username=123&password=123`
 
 ## 依赖
